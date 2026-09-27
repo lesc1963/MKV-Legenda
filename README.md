@@ -5,6 +5,7 @@ de arquivos MKV. Todo o processamento acontece localmente no Mac.
 
 ## Recursos
 
+- Identidade visual LESC no cabeçalho, com o mesmo logo do PDF Builder.
 - Abrir arquivos MKV por seleção ou arrastar e soltar.
 - Identificar todas as faixas de legenda com `ffprobe`.
 - Escolher a faixa e a pasta de destino.

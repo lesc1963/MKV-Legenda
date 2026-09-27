@@ -12,6 +12,7 @@ let package = Package(
         .executableTarget(
             name: "MKVLegenda",
             path: "Sources/MKVLegenda",
+            resources: [.copy("Resources/lesc-logo.png")],
             swiftSettings: [.swiftLanguageMode(.v5)]
         )
     ]

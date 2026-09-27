@@ -12,6 +12,7 @@ swift build --disable-sandbox -c release --scratch-path "$project_dir/.build"
 mkdir -p "$app_dir/Contents/MacOS" "$app_dir/Contents/Resources"
 cp ".build/release/MKVLegenda" "$app_dir/Contents/MacOS/MKVLegenda"
 cp "Info.plist" "$app_dir/Contents/Info.plist"
+cp "Sources/MKVLegenda/Resources/lesc-logo.png" "$app_dir/Contents/Resources/lesc-logo.png"
 xattr -cr "$app_dir"
 codesign --force --deep --sign - "$app_dir"
 

@@ -363,6 +363,16 @@ final class ExtractorModel: ObservableObject {
     }
 }
 
+private enum LESCBranding {
+    static let logo: NSImage? = {
+        // The app package keeps the logo in its standard Resources directory.
+        // SwiftPM's bundle supports running the executable with swift run.
+        let url = Bundle.main.url(forResource: "lesc-logo", withExtension: "png")
+            ?? Bundle.module.url(forResource: "lesc-logo", withExtension: "png")
+        return url.flatMap { NSImage(contentsOf: $0) }
+    }()
+}
+
 struct ContentView: View {
     @StateObject private var model = ExtractorModel()
     @State private var isDropTargeted = false
@@ -383,10 +393,17 @@ struct ContentView: View {
     }
 
     private var header: some View {
-        HStack(spacing: 12) {
-            Image(systemName: "captions.bubble.fill")
-                .font(.system(size: 34))
-                .foregroundStyle(.tint)
+        HStack(spacing: 18) {
+            if let logo = LESCBranding.logo {
+                Image(nsImage: logo)
+                    .resizable()
+                    .interpolation(.high)
+                    .scaledToFit()
+                    .frame(width: 128, height: 52)
+                    .padding(8)
+                    .background(.white, in: RoundedRectangle(cornerRadius: 10))
+                    .accessibilityLabel("LESC")
+            }
             VStack(alignment: .leading, spacing: 2) {
                 Text("MKV Legenda").font(.title2.bold())
                 Text("Extraia legendas de vídeos MKV").foregroundStyle(.secondary)
